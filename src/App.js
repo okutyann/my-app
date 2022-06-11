@@ -6,22 +6,25 @@ function App() {
   const [todos, setTods] = useState([
     { id: 1, name: "todo1", completed: true },
     { id: 2, name: "todo2", completed: false },
-    { id: 3, name: "todo3", completed: false },
-    { id: 4, name: "todo4", completed: false },
   ]);
+
   const listname = useRef();
 
+  //リスト追加
   const listadd = () => {
-    //リスト追加
     const name = listname.current.value;
     setTods((prevTodos) => {
       return [...prevTodos, { id: uuidv4(), name: name, completed: false }]
     })
     listname.current.value = null;
   };
+
+  //リスト完了
   const toggleTodo = (id) => {
     const newTodos = [...todos]
+    console.log("aaa",newTodos)
     const todo = newTodos.find((todo) => todo.id === id);
+    console.log("bbb",todo)
     todo.completed = !todo.completed;
     setTods(newTodos);
   };
